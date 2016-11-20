@@ -1,0 +1,142 @@
+html部分需要引入
+<div class="move-pic" id="abc">
+        <div class="inside-text">
+        </div>
+        <div class="inside-move">
+            <span id="link-left">
+                <
+            </span>
+            <span id="link-right">
+                >
+            </span>
+            <ul id="inside-ul">
+                <li class="current"><span><b></b></span></li>
+                <li><span><b></b></span></li>
+                <li><span><b></b></span></li>
+                <li><span><b></b></span></li>
+                <li><span><b></b></span></li>
+            </ul>
+        </div>
+    </div>
+注：可以按需决定是否需要inside-text盒子（内容介绍）和inside-move盒子（可以全局浏览的轮播图），按钮放在了inside-move盒子中，如何需要按钮但不需要这个盒子的话，可以把里面span标签
+拿出来，改一下js里面获取标签的元素即可（这里写的时候没考虑到，就懒得再改了）；鼠标进入按钮时会停止轮播，离开后就继续轮播；
+css部分需要引入
+/*轮播图小图选中显示*/
+        .current{
+            border-bottom:2px solid darkred !important;
+        }
+        /* 清除出浮动*/
+        .clearfix::after,
+        .clearfix::before{
+            content:"";
+            height:0;
+            visibility: hidden;
+            line-height: 0;
+            clear:both;
+            display: block;
+        }
+        .clearfix{
+            zoom: 1;
+        }
+
+
+
+        .move-pic{
+            width: 500px;
+            height: 281px;
+            margin: 100px auto;
+            overflow: hidden;
+            position: relative;
+            border: 10px solid darkgray;
+        }
+        .move-pic ul{
+            width: 3000px;
+            position: absolute;
+        }
+        .move-pic ul li{
+            float: left;
+            list-style: none;
+
+        }
+        .move-pic .inside-text{
+            width: 100%;
+            height: 50px;
+            background-color: rgba(0,0,0,0.35);
+            position: absolute;
+            z-index: 2;
+            top: 138px;
+        }
+        .move-pic .inside-text h3{
+            padding: 15px 0 0 30px;
+            color: #fff;
+        }
+        .move-pic .inside-move{
+            width: 100%;
+            height: 33%;
+            background-color: rgba(25,25,25,0.8);
+            position: absolute;
+            bottom: 0px;
+            z-index: 2;
+        }
+        .move-pic .inside-move #link-left{
+            background-color: rgba(255,255,255,0.8);
+            color: dodgerblue;
+            display: block;
+            height: 100%;
+            width: 20px;
+            font-size: 30px;
+            font-family: monospace;
+            padding-top: 30px;
+            position: absolute;
+            left: 0px;
+            cursor: pointer;
+        }
+        .move-pic .inside-move #link-right{
+            background-color: rgba(255,255,255,0.8);
+            color: dodgerblue;
+            display: block;
+            height: 100%;
+            width: 20px;
+            font-size: 30px;
+            font-family: monospace;
+            padding-top: 30px;
+            position: absolute;
+            right: 0px;
+            cursor: pointer;
+        }
+        .move-pic .inside-move ul{
+            margin-left: 20px;
+            height: 100%;
+            width: 460px;
+        }
+        .move-pic .inside-move li{
+            box-sizing: border-box;
+            float: left;
+            width: 92px;
+            height: 100%;
+            /*margin: 0 1px;*/
+            background-color: darkblue;
+            border: 1px solid #ddd;
+            position: relative;
+        }
+        .move-pic .inside-move li span{
+            display: block;
+            height: 30px;
+            width: 100%;
+            background-color: #fff;
+            position: absolute;
+            bottom: 0px;
+            overflow: hidden;
+        }
+
+        .move-pic .inside-move li span b{
+            font-weight: normal;
+            color: deepskyblue;
+            display: block;
+            padding: 5px 5px;
+        }
+注：引入就好了，不喜欢的地方自己更改一下代码就好了；
+js部分需要引入的文件：
+直接引入slider.js就好了，我已经把js放在slider里面了，index中就没有用引用的方式了；
+代码还有很多可以优化的地方 比如声明等等，可以自己没事的时候优化一下。
+作者：严增勇
